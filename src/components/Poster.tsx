@@ -1,11 +1,52 @@
-import UNPoster from "../assets/un-poster.jpg";
+import { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
-const Poster = () => {
+
+
+interface Props {
+  posterImages: string[];
+}
+
+const Poster = ({posterImages}: Props) => {
+  const [posterIndex, setPosterIndex] = useState(0);
+  const [animate, setAnimate] = useState(false);
+
+  const handleNextPoster = () => {
+    setPosterIndex(index => {
+      if (index === posterImages.length - 1) return 0;
+      return index + 1;
+  });
+    triggerAnimation();
+  } 
+
+  const handlePrevPoster = () => {
+    setPosterIndex(index => {
+      if (index === 0) return posterImages.length - 1;
+      return index - 1;
+  });
+    triggerAnimation();
+  }
+
+  const triggerAnimation = () => {
+    setAnimate(false);
+    setTimeout(() => setAnimate(true), 0);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(handleNextPoster, 5000);
+    return () => clearInterval(interval);
+  }, [posterIndex]);
+
   return (
     <section className="block poster">
       <h2>Poster</h2>
       <div className="grid grid--1x2 grid--center">
-        <img src={UNPoster} className="img poster__img" alt="" />
+        <div className="slider">
+          <img src={posterImages[posterIndex]} alt="" className={`img poster__img ${animate ? "animate" : ""}`} />
+          <button className="btn slider__btn slider--left btn--primary btn--circle" onClick={handlePrevPoster}><FaArrowLeft size={15}/></button>
+          <button className="btn slider__btn slider--right btn--primary btn--circle" onClick={handleNextPoster}><FaArrowRight size={15} /></button> 
+        </div>
         <div className="poster__description">
           <p>
             The poster centers on a globe, representing Earth as the home we all

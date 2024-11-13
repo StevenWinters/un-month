@@ -158,11 +158,21 @@ p {
 .btn {
   border: 0;
   outline: 0;
-  padding: 2rem 4rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn--circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
 }
 
 .btn--primary {
-  background-color: var(--color-primary);
+  background-color: #fff;
 }
 
 .btn-accent {
@@ -296,8 +306,41 @@ p {
   background: linear-gradient(to top, #0086e0, #fff);
 }
 
+.slider {
+  position: relative;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 20px #00000041;
+}
+
+.slider--left {
+  left: -10%;
+}
+
+.slider--right {
+  right: -10%;
+}
+
 .poster__img {
   max-width: 500px;
+}
+
+.poster__img.animate {
+  animation: posterImage 0.5s ease;
+}
+
+@keyframes posterImage {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .poster__description {
@@ -306,6 +349,7 @@ p {
   padding: 3rem;
   margin-top: 2rem;
 }
+
 
 @media screen and (min-width: 1024px) {
   .poster__description {
