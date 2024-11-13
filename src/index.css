@@ -79,6 +79,12 @@ p {
 
 .video {
   width: 100%;
+  box-shadow: 0 0 20px #0000006f;
+}
+
+.video__container {
+  background: linear-gradient(to top, var(--color-secondary) 10%, #fff 70%);
+  z-index: -1;
 }
 
 /* LOGO */

@@ -18,9 +18,9 @@ function App() {
     <>
       <NavBar />
       <Hero />
-      <Video />
-      <Info />
       <Poster posterImages={posterImages} />
+      <Info />
+      <Video />
     </>
   );
 }
