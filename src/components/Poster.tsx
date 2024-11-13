@@ -44,7 +44,7 @@ const Poster = ({posterImages}: Props) => {
       <div className="grid grid--1x2 grid--center">
         <div className="slider">
           <img src={posterImages[posterIndex]} alt="" className={`img poster__img ${animate ? "animate" : ""}`} />
-          <button className="btn slider__btn slider--left btn--primary btn--circle" onClick={handlePrevPoster}><FaArrowLeft size={15}/></button>
+          <button className="btn slider__btn slider--left btn--primary btn--circle" onClick={handlePrevPoster}><FaArrowLeft size={15} /></button>
           <button className="btn slider__btn slider--right btn--primary btn--circle" onClick={handleNextPoster}><FaArrowRight size={15} /></button> 
         </div>
         <div className="poster__description">
